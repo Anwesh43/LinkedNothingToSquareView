@@ -18,9 +18,10 @@ val steps : Int = 2
 val scGap : Float = 0.05f
 val scDiv : Double = 0.51
 val strokeFactor : Int = 90
-val sizeFactor : Float = 2.9f
-val foreColor : Int = Color.parseColor("#00C853")
+val sizeFactor : Float = 2.5f
+val foreColor : Int = Color.parseColor("#FF5722")
 val backColor : Int = Color.parseColor("#BDBDBD")
+val delay : Long = 20
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
@@ -118,7 +119,7 @@ class NothingToSquareView(ctx : Context) : View(ctx) {
             if (animated) {
                 cb()
                 try {
-                    Thread.sleep(50)
+                    Thread.sleep(delay)
                     view.invalidate()
                 } catch(ex : Exception) {
 
