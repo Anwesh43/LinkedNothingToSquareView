@@ -204,4 +204,26 @@ class NothingToSquareView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : NothingToSquareView) {
+
+        private val nts : NothingToSquare = NothingToSquare(0)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas, paint : Paint) {
+            canvas.drawColor(backColor)
+            nts.draw(canvas, paint)
+            animator.animate {
+                nts.update {i, scl ->
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            nts.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
