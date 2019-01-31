@@ -234,7 +234,7 @@ class NothingToSquareView(ctx : Context) : View(ctx) {
         fun create(activity : Activity) : NothingToSquareView {
             val view : NothingToSquareView = NothingToSquareView(activity)
             activity.setContentView(view)
-            return view 
+            return view
         }
     }
 }
