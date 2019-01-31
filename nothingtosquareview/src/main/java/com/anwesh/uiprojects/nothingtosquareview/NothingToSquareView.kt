@@ -228,4 +228,13 @@ class NothingToSquareView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : NothingToSquareView {
+            val view : NothingToSquareView = NothingToSquareView(activity)
+            activity.setContentView(view)
+            return view 
+        }
+    }
 }
