@@ -29,9 +29,9 @@ fun Float.scaleFactor() : Float = Math.floor(this / scDiv).toFloat()
 fun Float.mirrorValue(a : Int, b : Int) : Float = (1 - scaleFactor()) * a.inverse() + scaleFactor() * b.inverse()
 fun Float.updateValue(dir : Float, a : Int, b : Int) : Float = mirrorValue(a, b) * dir * scGap
 
-fun Canvas.drawRotateLine(x : Float, y: Float, size : Float, scale : Float, paint : Paint) {
+fun Canvas.drawRotateLine(x : Float, size : Float, scale : Float, paint : Paint) {
     save()
-    translate(x, y)
+    translate(x, 0f)
     rotate(-90f * (1 - scale.divideScale(1, 2)))
     drawLine(0f, 0f, size * scale.divideScale(0, 2), 0f, paint)
     restore()
@@ -66,7 +66,7 @@ fun Canvas.drawNTSNode(i : Int, scale : Float, paint : Paint) {
         translate(-size, y)
         for (k in (0..(lines - 1))) {
             val sck : Float = sc1.divideScale(k, lines)
-            drawRotateLine(k * xGap, y, xGap, sck, paint)
+            drawRotateLine(k * xGap, xGap, sck, paint)
         }
         restore()
     }
@@ -146,7 +146,7 @@ class NothingToSquareView(ctx : Context) : View(ctx) {
         private var prev : NTSNode? = null
 
         init {
-
+            addNeighbor()
         }
 
         fun addNeighbor() {
