@@ -12,7 +12,7 @@ import android.graphics.Color
 import android.app.Activity
 import android.content.Context
 
-val nodes : Int = 5
+val nodes : Int = 1
 val lines : Int = 4
 val steps : Int = 2
 val scGap : Float = 0.05f
